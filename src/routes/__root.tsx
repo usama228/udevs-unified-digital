@@ -11,6 +11,11 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
+import { FloatingActions } from "@/components/site/FloatingActions";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,11 +82,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      {
+        title: "U Devs — Smart & Scalable Technology Solutions",
+        },
+      {
+        name: "description",
+        content:
+          "U Devs builds enterprise software, AI, ERP, CRM, web and mobile solutions, and runs training and Quran learning academies.",
+      },
+      { name: "author", content: "U Devs" },
+      { property: "og:site_name", content: "U Devs" },
+      { property: "og:title", content: "U Devs — Smart & Scalable Technology Solutions" },
+      {
+        property: "og:description",
+        content:
+          "Premium software development, professional training and modern Quran learning under one brand.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -91,7 +107,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap",
+      },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "U Devs",
+          url: "https://udevs.company",
+          email: "udevsofficial25@gmail.com",
+          telephone: "+92-324-9351851",
+          founder: { "@type": "Person", name: "Usama Aslam" },
+          description:
+            "Smart and scalable technology solutions: software development, training academy and Quran learning platform.",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -119,8 +157,15 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <ScrollProgress />
+      <Header />
+      <main className="min-h-screen">
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </main>
+      <Footer />
+      <FloatingActions />
+      <Toaster />
     </QueryClientProvider>
   );
 }
