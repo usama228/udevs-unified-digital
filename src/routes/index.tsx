@@ -45,30 +45,36 @@ const HERO_TAGS = [
 function Index() {
   return (
     <>
-      <section className="bg-night relative flex min-h-screen items-center overflow-hidden pt-32 pb-20">
-        <div className="animate-drift bg-primary/30 absolute -top-32 -left-20 h-[28rem] w-[28rem] rounded-full blur-[140px]" />
-        <div className="animate-drift bg-accent/20 absolute right-0 bottom-0 h-[26rem] w-[26rem] rounded-full blur-[140px]" />
-        <div className="animate-float bg-accent/30 absolute top-1/3 left-1/2 h-24 w-24 rounded-3xl blur-2xl" />
+      <section className="bg-night relative flex min-h-[88vh] items-center overflow-hidden pt-32 pb-24">
+        <div className="bg-grid absolute inset-0 opacity-40" />
+        <div className="animate-drift bg-primary/18 absolute -top-40 -left-24 h-[30rem] w-[30rem] rounded-full blur-[160px]" />
+        <div className="bg-accent/10 absolute right-0 bottom-0 h-[24rem] w-[24rem] rounded-full blur-[160px]" />
 
         <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
           <div>
             <Reveal>
-              <span className="border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground/85 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold tracking-[0.16em] uppercase">
+              <span className="border-primary-foreground/15 bg-primary-foreground/5 text-primary-foreground/70 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[11px] font-medium tracking-[0.22em] uppercase">
                 U Devs · Success Starts Here
               </span>
             </Reveal>
             <Reveal delay={80}>
-              <h1 className="text-primary-foreground mt-6 text-4xl leading-[1.05] sm:text-5xl xl:text-6xl">
-                We Build <span className="text-gradient">Future Ready</span> Digital
+              <h1 className="text-primary-foreground mt-7 text-4xl leading-[1.06] font-semibold tracking-[-0.03em] sm:text-5xl xl:text-[3.85rem]">
+                We Build <span className="text-accent">Future Ready</span> Digital
                 Solutions
               </h1>
             </Reveal>
+            <Reveal delay={120}>
+              <p className="text-primary-foreground/65 mt-6 max-w-xl text-base leading-relaxed">
+                Custom software, AI systems, ERP/CRM platforms and digital growth —
+                engineered by a team that ships, reviews and maintains.
+              </p>
+            </Reveal>
             <Reveal delay={160}>
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-7 flex flex-wrap gap-2">
                 {HERO_TAGS.map((t) => (
                   <span
                     key={t}
-                    className="border-primary-foreground/15 bg-primary-foreground/5 text-primary-foreground/75 rounded-full border px-3 py-1.5 text-xs font-medium"
+                    className="border-primary-foreground/12 text-primary-foreground/65 hover:border-accent/40 hover:text-primary-foreground rounded-full border px-3 py-1.5 text-xs font-medium transition-colors duration-200"
                   >
                     {t}
                   </span>
@@ -76,12 +82,13 @@ function Index() {
               </div>
             </Reveal>
             <Reveal delay={240}>
-              <div className="mt-9 flex flex-wrap items-center gap-3">
+              <div className="mt-10 flex flex-wrap items-center gap-3">
                 <Link
                   to="/contact"
-                  className="bg-brand-gradient text-primary-foreground shadow-glow inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-transform hover:scale-[1.03]"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 shine group inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-200"
                 >
-                  Get Started <ArrowRight className="h-4 w-4" />
+                  Get Started
+                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
                 <Link
                   to="/contact"
@@ -103,20 +110,20 @@ function Index() {
 
           <Reveal delay={200}>
             <div className="relative">
-              <div className="glass-card animate-float overflow-hidden rounded-3xl p-2">
+              <div className="glass-card overflow-hidden rounded-2xl p-2">
                 <img
                   src={heroDashboard}
                   alt="U Devs analytics dashboard interface"
                   width={1280}
                   height={1024}
-                  className="w-full rounded-2xl"
+                  className="w-full rounded-xl"
                 />
               </div>
-              <div className="glass-card absolute -bottom-6 -left-4 hidden rounded-2xl px-5 py-4 sm:block">
+              <div className="glass-card absolute -bottom-6 -left-4 hidden rounded-xl px-5 py-4 sm:block">
                 <p className="text-primary-foreground text-2xl font-bold">
                   <Counter value={100} suffix="+" />
                 </p>
-                <p className="text-primary-foreground/70 text-xs">Projects delivered</p>
+                <p className="text-primary-foreground/60 text-xs tracking-wide">Projects delivered</p>
               </div>
             </div>
           </Reveal>
