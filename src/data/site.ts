@@ -4,6 +4,9 @@ import p12Assets from "@/assets/p12-assets.png.asset.json";
 import p12Arcana from "@/assets/p12-arcana.png.asset.json";
 import p12Community from "@/assets/p12-community.png.asset.json";
 import p12Loader from "@/assets/p12-loader.png.asset.json";
+import marsProjects from "@/assets/mars-projects.jpeg.asset.json";
+import marsCalendar from "@/assets/mars-calendar.jpeg.asset.json";
+import marsLogin from "@/assets/mars-login.jpeg.asset.json";
 
 export const SITE = {
   name: "U Devs",
@@ -159,6 +162,21 @@ export const PROJECTS: {
     ],
   },
   { title: "Enterprise ERP Suite", category: "ERP", client: "Manufacturing Group", tech: ["React", "Node", "PostgreSQL"], summary: "Unified production, inventory and finance across 6 plants." },
+  {
+    title: "Mars Research Check-In Platform",
+    category: "Web",
+    client: "Mars Research",
+    tech: ["React", "Ruby on Rails", "PostgreSQL"],
+    summary:
+      "A research operations platform for managing studies, participant scheduling and in-person or online appointment check-ins.",
+    image: marsProjects.url,
+    link: "https://mars1.researchcheckin.com/",
+    gallery: [
+      { url: marsProjects.url, caption: "Projects dashboard with search, filters and live study status" },
+      { url: marsCalendar.url, caption: "Project calendar with day, week and month appointment views" },
+      { url: marsLogin.url, caption: "Branded secure login for research staff and admins" },
+    ],
+  },
   { title: "Healthcare CRM", category: "CRM", client: "Private Hospital Network", tech: ["Next.js", "Nest", "MySQL"], summary: "Patient lifecycle, appointments and automated follow-ups." },
   { title: "AI Support Copilot", category: "AI", client: "SaaS Startup", tech: ["OpenAI", "Python", "AWS"], summary: "Cut first-response time by 71% with a retrieval chatbot." },
   { title: "Fintech Mobile Wallet", category: "Mobile", client: "Fintech", tech: ["Flutter", "Firebase"], summary: "KYC onboarding, payments and rewards for 40k users." },
