@@ -5,6 +5,9 @@ import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { STATS, TEAM, TIMELINE } from "@/data/site";
 import { Globe, Linkedin } from "lucide-react";
 
+const FOUNDER = TEAM[0]!;
+const COFOUNDER = TEAM[1]!;
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -41,7 +44,7 @@ function AboutPage() {
           <Reveal>
             <div className="border-border bg-card h-full overflow-hidden rounded-3xl border">
               <img
-                src={TEAM[0].photo}
+                src={FOUNDER.photo}
                 alt="Usama Aslam, Founder and CEO of U Devs"
                 loading="lazy"
                 className="h-80 w-full object-cover object-top"
@@ -53,7 +56,7 @@ function AboutPage() {
               <h2 className="mt-2 text-2xl">Usama Aslam</h2>
               <div className="mt-3 flex flex-wrap gap-2">
                 <a
-                  href={TEAM[0].linkedin}
+                  href={FOUNDER.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
@@ -61,7 +64,7 @@ function AboutPage() {
                   <Linkedin className="h-3.5 w-3.5" /> LinkedIn
                 </a>
                 <a
-                  href={TEAM[0].website}
+                  href={FOUNDER.website}
                   target="_blank"
                   rel="noreferrer"
                   className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
@@ -82,7 +85,7 @@ function AboutPage() {
           <Reveal delay={100}>
             <div className="border-border bg-card h-full overflow-hidden rounded-3xl border">
               <img
-                src={TEAM[1].photo}
+                src={COFOUNDER.photo}
                 alt="Warda Fatima, Co-Founder of U Devs"
                 loading="lazy"
                 className="h-80 w-full object-cover object-top"
@@ -94,7 +97,7 @@ function AboutPage() {
               <h2 className="mt-2 text-2xl">Warda Fatima</h2>
               <div className="mt-3 flex flex-wrap gap-2">
                 <a
-                  href={TEAM[1].linkedin}
+                  href={COFOUNDER.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
@@ -102,7 +105,7 @@ function AboutPage() {
                   <Linkedin className="h-3.5 w-3.5" /> LinkedIn
                 </a>
                 <a
-                  href={TEAM[1].website}
+                  href={COFOUNDER.website}
                   target="_blank"
                   rel="noreferrer"
                   className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
