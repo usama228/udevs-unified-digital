@@ -218,21 +218,21 @@
 
 @utility bg-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklab, var(--color-foreground) 8%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklab, var(--color-foreground) 8%, transparent) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to right, color-mix(in oklab, var(--color-foreground) 4.5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--color-foreground) 4.5%, transparent) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
 
 @utility card-hover {
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease;
 
   &:hover {
-    transform: translateY(-6px);
-    border-color: color-mix(in oklab, var(--color-primary) 45%, transparent);
-    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--color-primary) 30%, transparent);
+    box-shadow: var(--shadow-soft);
   }
 }
 
