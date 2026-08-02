@@ -181,8 +181,8 @@
   h4,
   h5 {
     font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.025em;
   }
 
   html {
