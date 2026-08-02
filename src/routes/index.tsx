@@ -18,13 +18,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "U Devs — Smart & Scalable Technology Solutions" },
+      { title: "U Devs — Software & Digital Solutions" },
       {
         name: "description",
         content:
           "We build future ready digital solutions: custom software, AI, ERP, CRM, web, mobile, cloud, marketing, training programs and Quran learning.",
       },
-      { property: "og:title", content: "U Devs — Smart & Scalable Technology Solutions" },
+      { property: "og:title", content: "U Devs — Software & Digital Solutions" },
       {
         property: "og:description",
         content:
