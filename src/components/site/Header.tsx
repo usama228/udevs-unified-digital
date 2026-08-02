@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { NAV } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import logoMark from "@/assets/udevs-mark.png.asset.json";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,19 +34,23 @@ export function Header() {
           scrolled ? "glass-card" : "border border-transparent text-white",
           )}
         >
-          <Link to="/" className="flex items-center gap-2.5">
-            <span className="bg-brand-gradient text-primary-foreground font-display flex h-10 w-10 items-center justify-center rounded-xl text-lg font-bold">
-              U
+          <Link to="/" className="group flex items-center gap-2.5">
+            <span className="bg-primary-foreground ring-primary/15 flex h-11 w-11 items-center justify-center rounded-2xl p-1.5 shadow-sm ring-1 transition-all duration-300">
+              <img
+                src={logoMark.url}
+                alt="U Devs logo"
+                className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-110"
+              />
             </span>
             <span className="font-display text-lg leading-none font-bold">
               U Devs
               <span
                 className={cn(
-                  "block text-[10px] font-medium tracking-[0.16em] uppercase",
+                  "mt-1 block text-[9.5px] font-medium tracking-[0.16em] uppercase",
                   scrolled ? "text-muted-foreground" : "text-white/70",
                 )}
               >
-                Technology Solutions
+                Software & Digital Solutions
               </span>
             </span>
           </Link>
@@ -56,8 +61,10 @@ export function Header() {
                 key={item.to}
                 to={item.to}
                 className={cn(
-                  "rounded-full px-3 py-2 text-sm font-medium transition-colors",
-                  scrolled ? "hover:text-primary" : "text-white/85 hover:text-white",
+                  "relative rounded-full px-3 py-2 text-sm font-medium transition-all duration-200",
+                  scrolled
+                    ? "hover:bg-primary/8 hover:text-primary"
+                    : "text-white/85 hover:bg-white/10 hover:text-white",
                 )}
                 activeProps={{
                   className: scrolled

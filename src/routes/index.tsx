@@ -18,13 +18,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "U Devs — Smart & Scalable Technology Solutions" },
+      { title: "U Devs — Software & Digital Solutions" },
       {
         name: "description",
         content:
           "We build future ready digital solutions: custom software, AI, ERP, CRM, web, mobile, cloud, marketing, training programs and Quran learning.",
       },
-      { property: "og:title", content: "U Devs — Smart & Scalable Technology Solutions" },
+      { property: "og:title", content: "U Devs — Software & Digital Solutions" },
       {
         property: "og:description",
         content:
@@ -145,7 +145,7 @@ function Index() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {DIVISIONS.map((d, i) => (
             <Reveal key={d.name} delay={i * 90}>
-              <div className="group border-border bg-card relative h-full overflow-hidden rounded-3xl border p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-glow)]">
+              <div className="group border-border bg-card relative h-full overflow-hidden rounded-3xl border p-8 transition-all duration-300 card-hover">
                 <div
                   className={
                     d.tone === "emerald"
@@ -280,7 +280,7 @@ function Index() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={t.name} delay={i * 80}>
-              <figure className="border-border bg-card h-full rounded-3xl border p-8">
+              <figure className="border-border bg-card card-hover h-full rounded-3xl border p-8">
                 <div className="text-accent flex gap-1">
                   {Array.from({ length: t.rating }).map((_, idx) => (
                     <Star key={idx} className="fill-current h-4 w-4" />

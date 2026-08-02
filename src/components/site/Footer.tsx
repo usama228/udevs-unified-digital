@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { NAV, SITE, SOCIALS } from "@/data/site";
+import logoMark from "@/assets/udevs-mark.png.asset.json";
 
 export function Footer() {
   return (
@@ -9,14 +10,19 @@ export function Footer() {
       <div className="container-x relative py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="bg-brand-gradient font-display flex h-11 w-11 items-center justify-center rounded-xl text-lg font-bold">
-                U
+            <div className="flex items-center gap-3">
+              <span className="bg-primary-foreground flex h-12 w-12 items-center justify-center rounded-2xl p-2 shadow-sm">
+                <img src={logoMark.url} alt="U Devs logo" className="h-full w-full object-contain" />
               </span>
-              <span className="font-display text-xl font-bold">U Devs</span>
+              <span className="font-display text-xl leading-none font-bold">
+                U Devs
+                <span className="text-primary-foreground/60 mt-1 block text-[10px] font-medium tracking-[0.16em] uppercase">
+                  Software &amp; Digital Solutions
+                </span>
+              </span>
             </div>
             <p className="text-primary-foreground/70 mt-4 max-w-sm text-sm leading-relaxed">
-              Smart and scalable technology solutions: a premium software studio, a
+              A software and digital solutions company: a premium engineering studio, a
               professional training academy and a modern Quran learning platform under
               one brand.
             </p>
@@ -107,7 +113,7 @@ export function Footer() {
                   href={s.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="border-primary-foreground/20 text-primary-foreground/75 hover:bg-primary-foreground/10 rounded-full border px-3 py-1.5 text-xs"
+                  className="border-primary-foreground/20 text-primary-foreground/75 hover:border-accent/60 hover:text-primary-foreground hover:bg-primary-foreground/10 rounded-full border px-3 py-1.5 text-xs transition-all duration-200 hover:-translate-y-0.5"
                 >
                   {s.label}
                 </a>

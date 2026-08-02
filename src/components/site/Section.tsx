@@ -62,11 +62,13 @@ export function PageHero({
 }) {
   return (
     <section className="bg-night relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
+      <div className="bg-grid absolute inset-0 opacity-[0.07]" />
       <div className="animate-drift bg-primary/25 absolute -top-24 -left-24 h-96 w-96 rounded-full blur-[120px]" />
       <div className="animate-drift bg-accent/20 absolute -right-24 bottom-0 h-96 w-96 rounded-full blur-[120px]" />
       <div className="container-x relative">
         <Reveal className="max-w-3xl">
-          <span className="border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground/80 inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-semibold tracking-[0.18em] uppercase">
+          <span className="border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground/80 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold tracking-[0.18em] uppercase backdrop-blur-sm">
+            <span className="bg-accent h-1.5 w-1.5 rounded-full" />
             {kicker}
           </span>
           <h1 className="text-primary-foreground mt-6 text-4xl leading-[1.05] md:text-6xl">

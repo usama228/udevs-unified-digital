@@ -83,16 +83,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        title: "U Devs — Smart & Scalable Technology Solutions",
+        title: "U Devs — Software & Digital Solutions",
         },
       {
         name: "description",
         content:
-          "U Devs builds enterprise software, AI, ERP, CRM, web and mobile solutions, and runs training and Quran learning academies.",
+          "U Devs is a software and digital solutions company building enterprise software, AI, ERP, CRM, web and mobile products, plus training and Quran learning academies.",
       },
       { name: "author", content: "U Devs" },
       { property: "og:site_name", content: "U Devs" },
-      { property: "og:title", content: "U Devs — Smart & Scalable Technology Solutions" },
+      { property: "og:title", content: "U Devs — Software & Digital Solutions" },
       {
         property: "og:description",
         content:
@@ -113,7 +113,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
     scripts: [
       {
