@@ -5,7 +5,7 @@ import { PageHero, Section } from "@/components/site/Section";
 import { PROJECTS, PROJECT_FILTERS } from "@/data/site";
 import { ExternalLink } from "lucide-react";
 
-const FEATURED = PROJECTS.find((p) => p.gallery)!;
+const FEATURED = PROJECTS.filter((p) => p.gallery);
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -110,32 +110,34 @@ function PortfolioPage() {
         </div>
       </Section>
 
-      <Section className="bg-surface border-border border-y">
-        <Reveal>
-          <p className="text-muted-foreground text-xs font-semibold tracking-[0.18em] uppercase">
-            Featured case study
-          </p>
-          <h2 className="mt-2 text-3xl">{FEATURED.title}</h2>
-          <p className="text-muted-foreground mt-3 max-w-2xl">{FEATURED.summary}</p>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {FEATURED.gallery?.map((shot, i) => (
-            <Reveal key={shot.url} delay={i * 70}>
-              <figure className="border-border bg-card overflow-hidden rounded-3xl border">
-                <img
-                  src={shot.url}
-                  alt={shot.caption}
-                  loading="lazy"
-                  className="w-full object-cover"
-                />
-                <figcaption className="text-muted-foreground p-5 text-sm">
-                  {shot.caption}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
+      {FEATURED.map((project) => (
+        <Section key={project.title} className="bg-surface border-border border-y">
+          <Reveal>
+            <p className="text-muted-foreground text-xs font-semibold tracking-[0.18em] uppercase">
+              Featured case study
+            </p>
+            <h2 className="mt-2 text-3xl">{project.title}</h2>
+            <p className="text-muted-foreground mt-3 max-w-2xl">{project.summary}</p>
+          </Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {project.gallery?.map((shot, i) => (
+              <Reveal key={shot.url} delay={i * 70}>
+                <figure className="border-border bg-card overflow-hidden rounded-3xl border">
+                  <img
+                    src={shot.url}
+                    alt={shot.caption}
+                    loading="lazy"
+                    className="w-full object-cover"
+                  />
+                  <figcaption className="text-muted-foreground p-5 text-sm">
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      ))}
     </>
   );
 }
