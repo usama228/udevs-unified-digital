@@ -3,7 +3,12 @@ export const SITE = {
   tagline: "Smart & Scalable Technology Solutions",
   email: "udevsofficial25@gmail.com",
   phone: "+92 324 9351851",
-  whatsapp: "https://api.whatsapp.com/send/?phone=923249351851&text=Hello",
+  whatsappNumber: "923249351851",
+  whatsapp:
+    "https://wa.me/923249351851?text=" +
+    encodeURIComponent(
+      "Hello U Devs! I found you online and I'd like to discuss a project. Could you share more details?",
+    ),
   address: "U Devs HQ, Lahore, Punjab, Pakistan",
   website: "https://udevs.company",
   hub: "https://udevs-hub.com",
