@@ -22,7 +22,28 @@ export const SITE = {
   address: "U Devs HQ, Lahore, Punjab, Pakistan",
   website: "https://udevs.company",
   hub: "https://udevs-hub.com",
-  register: "https://forms.gle/jsXJjVKRu747fGdW7",
+  register: "https://forms.gle/ConfJuQWwUFWQ1Xa8",
+};
+
+export const INTERNSHIP = {
+  title: "U Devs Internship Programme",
+  duration: "2.5 months",
+  mode: "Remote · Live classes on Google Meet",
+  stipend: "Unpaid · performance based, may lead to a job offer",
+  tracks: [
+    "Full Stack Development",
+    "Frontend Development",
+    "Digital Marketing",
+    "Freelancing",
+    "WordPress",
+    "Shopify",
+  ],
+  perks: [
+    "Proper mentorship from working engineers",
+    "Structured training and weekly reviews",
+    "Live online classes on Google Meet",
+    "Top performers may be offered a full time role",
+  ],
 };
 
 export const SOCIALS = [
