@@ -1,7 +1,10 @@
+import { useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, PlayCircle, Star, Check } from "lucide-react";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { ArrowRight, PlayCircle, Star, Check, ShieldCheck, Zap } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.jpg";
-import { Reveal } from "@/components/site/Reveal";
+import { Reveal, TextReveal } from "@/components/site/Reveal";
+import { Magnetic } from "@/components/site/MagneticButton";
 import { Counter } from "@/components/site/Counter";
 import { Section, SectionHeading } from "@/components/site/Section";
 import {
@@ -43,64 +46,112 @@ const HERO_TAGS = [
 ];
 
 function Index() {
+  const heroRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const parallaxY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 90]), {
+    stiffness: 90,
+    damping: 24,
+  });
+
+  const onHeroMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (reduced) return;
+    const el = heroRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--px", `${((e.clientX - r.left) / r.width - 0.5) * 2}`);
+    el.style.setProperty("--py", `${((e.clientY - r.top) / r.height - 0.5) * 2}`);
+  };
+
   return (
     <>
-      <section className="bg-night relative flex min-h-[88vh] items-center overflow-hidden pt-32 pb-24">
-        <div className="bg-grid absolute inset-0 opacity-40" />
-        <div className="animate-drift bg-primary/18 absolute -top-40 -left-24 h-[30rem] w-[30rem] rounded-full blur-[160px]" />
-        <div className="bg-accent/10 absolute right-0 bottom-0 h-[24rem] w-[24rem] rounded-full blur-[160px]" />
+      <section
+        ref={heroRef}
+        onMouseMove={onHeroMove}
+        className="bg-night relative flex min-h-[92vh] items-center overflow-hidden pt-32 pb-28"
+      >
+        <div className="bg-aurora absolute inset-0 opacity-70" />
+        <div className="bg-grid absolute inset-0 opacity-30" />
+        <motion.div style={{ y: parallaxY }} className="absolute inset-0">
+          <div className="animate-drift bg-primary/20 absolute -top-40 -left-24 h-[30rem] w-[30rem] rounded-full blur-[160px]" />
+          <div className="animate-float bg-accent/12 absolute right-0 bottom-0 h-[24rem] w-[24rem] rounded-full blur-[160px]" />
+        </motion.div>
+        {!reduced
+          ? Array.from({ length: 14 }).map((_, i) => (
+              <motion.span
+                key={i}
+                className="bg-accent/50 absolute h-1 w-1 rounded-full"
+                style={{ left: `${(i * 37) % 96}%`, top: `${(i * 53) % 88}%` }}
+                animate={{ y: [0, -26, 0], opacity: [0.15, 0.7, 0.15] }}
+                transition={{
+                  duration: 6 + (i % 5),
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: i * 0.35,
+                }}
+              />
+            ))
+          : null}
 
         <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
           <div>
-            <Reveal>
+            <Reveal variant="blur">
               <span className="border-primary-foreground/15 bg-primary-foreground/5 text-primary-foreground/70 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-[11px] font-medium tracking-[0.22em] uppercase">
                 U Devs · Success Starts Here
               </span>
             </Reveal>
-            <Reveal delay={80}>
-              <h1 className="text-primary-foreground mt-7 text-4xl leading-[1.06] font-semibold tracking-[-0.03em] sm:text-5xl xl:text-[3.85rem]">
-                We Build <span className="text-accent">Future Ready</span> Digital
-                Solutions
-              </h1>
-            </Reveal>
-            <Reveal delay={120}>
+            <h1 className="text-primary-foreground mt-7 text-4xl leading-[1.06] font-semibold tracking-[-0.03em] sm:text-5xl xl:text-[3.85rem]">
+              <TextReveal text="We Build" delay={120} />
+              <span className="text-accent">
+                <TextReveal text="Future Ready" delay={280} />
+              </span>
+              <TextReveal text="Digital Solutions" delay={420} />
+            </h1>
+            <Reveal delay={220} variant="blur">
               <p className="text-primary-foreground/65 mt-6 max-w-xl text-base leading-relaxed">
                 Custom software, AI systems, ERP/CRM platforms and digital growth —
                 engineered by a team that ships, reviews and maintains.
               </p>
             </Reveal>
-            <Reveal delay={160}>
+            <Reveal delay={280}>
               <div className="mt-7 flex flex-wrap gap-2">
                 {HERO_TAGS.map((t) => (
                   <span
                     key={t}
-                    className="border-primary-foreground/12 text-primary-foreground/65 hover:border-accent/40 hover:text-primary-foreground rounded-full border px-3 py-1.5 text-xs font-medium transition-colors duration-200"
+                    className="border-primary-foreground/12 text-primary-foreground/65 hover:border-accent/40 hover:text-primary-foreground hover:bg-primary-foreground/5 rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-300"
                   >
                     {t}
                   </span>
                 ))}
               </div>
             </Reveal>
-            <Reveal delay={240}>
+            <Reveal delay={360}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
-                <Link
-                  to="/contact"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 shine group inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-200"
-                >
-                  Get Started
-                  <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  to="/contact"
-                  className="border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 inline-flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold transition-colors"
-                >
-                  Book Consultation
-                </Link>
+                <Magnetic>
+                  <Link
+                    to="/contact"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-glow shine group inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold transition-all duration-300"
+                  >
+                    Get Started
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.2}>
+                  <Link
+                    to="/contact"
+                    className="border-primary-foreground/25 text-primary-foreground hover:bg-primary-foreground/10 inline-flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold transition-colors duration-300"
+                  >
+                    Book Consultation
+                  </Link>
+                </Magnetic>
                 <a
                   href="https://www.youtube.com/watch?v=q0jCUiWt1yw"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-primary-foreground/80 hover:text-primary-foreground inline-flex items-center gap-2 text-sm font-semibold"
+                  className="text-primary-foreground/80 hover:text-primary-foreground link-underline inline-flex items-center gap-2 text-sm font-semibold transition-colors"
                 >
                   <PlayCircle className="h-5 w-5" /> Watch Company Video
                 </a>
@@ -108,24 +159,58 @@ function Index() {
             </Reveal>
           </div>
 
-          <Reveal delay={200}>
-            <div className="relative">
-              <div className="glass-card overflow-hidden rounded-2xl p-2">
+          <Reveal delay={260} variant="scale">
+            <motion.div
+              className="relative"
+              style={
+                reduced
+                  ? {}
+                  : {
+                      transform:
+                        "translate3d(calc(var(--px, 0) * 10px), calc(var(--py, 0) * 10px), 0)",
+                      transition: "transform 0.5s cubic-bezier(0.22,1,0.36,1)",
+                    }
+              }
+            >
+              <div className="glass-card zoom-media overflow-hidden rounded-[1.5rem] p-2">
                 <img
                   src={heroDashboard}
                   alt="U Devs analytics dashboard interface"
                   width={1280}
                   height={1024}
-                  className="w-full rounded-xl"
+                  className="w-full rounded-[1.25rem]"
                 />
               </div>
-              <div className="glass-card absolute -bottom-6 -left-4 hidden rounded-xl px-5 py-4 sm:block">
+
+              <motion.div
+                animate={reduced ? {} : { y: [0, -12, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="border-primary-foreground/15 bg-[oklch(0.19_0.064_265.5_/_0.88)] absolute -bottom-5 left-4 hidden rounded-2xl border px-5 py-4 shadow-lg backdrop-blur-xl sm:block"
+              >
                 <p className="text-primary-foreground text-2xl font-bold">
                   <Counter value={100} suffix="+" />
                 </p>
-                <p className="text-primary-foreground/60 text-xs tracking-wide">Projects delivered</p>
-              </div>
-            </div>
+                <p className="text-primary-foreground/60 text-xs tracking-wide">
+                  Projects delivered
+                </p>
+              </motion.div>
+
+              <motion.div
+                animate={reduced ? {} : { y: [0, 10, 0] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+                className="border-primary-foreground/15 bg-[oklch(0.19_0.064_265.5_/_0.88)] text-primary-foreground absolute -top-4 right-4 hidden items-center gap-2 rounded-2xl border px-4 py-3 text-xs font-semibold shadow-lg backdrop-blur-xl md:flex"
+              >
+                <ShieldCheck className="text-accent h-4 w-4" /> Enterprise-grade delivery
+              </motion.div>
+
+              <motion.div
+                animate={reduced ? {} : { y: [0, -8, 0] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+                className="border-primary-foreground/15 bg-[oklch(0.19_0.064_265.5_/_0.88)] text-primary-foreground absolute top-1/2 -right-4 hidden items-center gap-2 rounded-2xl border px-4 py-3 text-xs font-semibold shadow-lg backdrop-blur-xl lg:flex"
+              >
+                <Zap className="text-accent h-4 w-4" /> 99.9% uptime
+              </motion.div>
+            </motion.div>
           </Reveal>
         </div>
       </section>
@@ -154,7 +239,7 @@ function Index() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {DIVISIONS.map((d, i) => (
             <Reveal key={d.name} delay={i * 90}>
-              <div className="group border-border bg-card relative h-full overflow-hidden rounded-3xl border p-8 transition-all duration-300 card-hover">
+              <div className="group border-border bg-card relative h-full overflow-hidden rounded-3xl border p-8 transition-all duration-300 lift-lg cursor-glow">
                 <div
                   className={
                     d.tone === "emerald"
@@ -197,7 +282,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section className="bg-surface border-border border-y">
+      <Section tone="alt">
         <SectionHeading
           kicker="Services"
           title="Everything you need to build, launch and scale"
@@ -260,7 +345,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section className="bg-surface border-border border-y">
+      <Section tone="alt">
         <SectionHeading
           kicker="Process"
           title="A transparent path from idea to impact"
@@ -289,7 +374,7 @@ function Index() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={t.name} delay={i * 80}>
-              <figure className="border-border bg-card card-hover h-full rounded-3xl border p-8">
+              <figure className="border-border bg-card lift-lg cursor-glow h-full rounded-3xl border p-8">
                 <div className="text-accent flex gap-1">
                   {Array.from({ length: t.rating }).map((_, idx) => (
                     <Star key={idx} className="fill-current h-4 w-4" />
@@ -311,7 +396,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section className="bg-surface border-border border-t">
+      <Section tone="alt">
         <SectionHeading kicker="Technologies" title="A stack chosen for longevity" />
         <div className="mt-10 flex flex-wrap justify-center gap-2.5">
           {TECHNOLOGIES.map((t) => (

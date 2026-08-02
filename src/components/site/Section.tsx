@@ -6,14 +6,24 @@ export function Section({
   children,
   className,
   id,
+  tone = "plain",
 }: {
   children: ReactNode;
   className?: string;
   id?: string;
+  /** "alt" gives the section a soft tinted band for vertical rhythm */
+  tone?: "plain" | "alt";
 }) {
   return (
-    <section id={id} className={cn("py-20 md:py-28", className)}>
-      <div className="container-x">{children}</div>
+    <section
+      id={id}
+      className={cn(
+        "relative py-24 md:py-32",
+        tone === "alt" && "section-alt border-border/60 border-y",
+        className,
+      )}
+    >
+      <div className="container-x relative">{children}</div>
     </section>
   );
 }
@@ -31,6 +41,7 @@ export function SectionHeading({
 }) {
   return (
     <Reveal
+      variant="blur"
       className={cn(
         "max-w-3xl",
         align === "center" ? "mx-auto text-center" : "text-left",
@@ -41,9 +52,13 @@ export function SectionHeading({
           {kicker}
         </span>
       ) : null}
-      <h2 className="mt-5 text-3xl leading-tight md:text-5xl">{title}</h2>
+      <h2 className="mt-5 text-3xl leading-[1.1] tracking-[-0.03em] md:text-5xl">
+        {title}
+      </h2>
       {text ? (
-        <p className="mt-4 text-base text-muted-foreground md:text-lg">{text}</p>
+        <p className="text-muted-foreground mt-5 text-base leading-relaxed md:text-lg">
+          {text}
+        </p>
       ) : null}
     </Reveal>
   );
@@ -61,12 +76,13 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="bg-night relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
+    <section className="bg-night relative overflow-hidden pt-36 pb-24 md:pt-44 md:pb-32">
+      <div className="bg-aurora absolute inset-0 opacity-60" />
       <div className="bg-grid absolute inset-0 opacity-[0.07]" />
       <div className="animate-drift bg-primary/25 absolute -top-24 -left-24 h-96 w-96 rounded-full blur-[120px]" />
       <div className="animate-drift bg-accent/20 absolute -right-24 bottom-0 h-96 w-96 rounded-full blur-[120px]" />
       <div className="container-x relative">
-        <Reveal className="max-w-3xl">
+        <Reveal className="max-w-3xl" variant="blur">
           <span className="border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground/80 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs font-semibold tracking-[0.18em] uppercase backdrop-blur-sm">
             <span className="bg-accent h-1.5 w-1.5 rounded-full" />
             {kicker}
