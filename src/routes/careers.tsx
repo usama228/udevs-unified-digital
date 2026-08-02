@@ -36,7 +36,7 @@ function CareersPage() {
         <div className="mx-auto mt-14 max-w-4xl space-y-4">
           {JOBS.map((j, i) => (
             <Reveal key={j.title} delay={i * 50}>
-              <div className="border-border bg-card flex flex-col gap-4 rounded-2xl border p-6 transition-colors hover:border-[var(--primary)] sm:flex-row sm:items-center sm:justify-between">
+              <div className="border-border bg-card gradient-border lift-sm flex flex-col gap-4 rounded-2xl border p-6 transition-colors hover:border-[var(--primary)] sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h3 className="text-lg">{j.title}</h3>
                   <p className="text-muted-foreground mt-1 flex items-center gap-3 text-sm">
@@ -50,7 +50,7 @@ function CareersPage() {
                 </div>
                 <a
                   href={`mailto:${SITE.email}?subject=Application: ${encodeURIComponent(j.title)}`}
-                  className="bg-brand-gradient text-primary-foreground inline-flex shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
+                  className="bg-brand-gradient text-primary-foreground shine inline-flex shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-transform duration-200 hover:scale-105 active:scale-95"
                 >
                   Apply Now
                 </a>
@@ -74,11 +74,12 @@ function CareersPage() {
         </Reveal>
       </Section>
 
-      <Section className="bg-muted/40">
+      <Section className="bg-muted/40 bg-grid relative overflow-hidden">
+        <div className="bg-primary/10 animate-drift pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full blur-3xl" />
         <SectionHeading
           kicker="Internship"
           title="Join the U Devs Internship Programme"
-          text="A 2.5 month remote internship with live classes on Google Meet, proper mentorship and structured training. Unpaid, and on a performance basis it may lead to a job at U Devs."
+          text="A 2.5 month remote internship with live classes on Google Meet, proper mentorship and structured training across engineering, AI/ML and marketing tracks. Unpaid, and on a performance basis it may lead to a job at U Devs."
         />
         <div className="mx-auto mt-14 max-w-5xl">
           <div className="grid gap-4 sm:grid-cols-3">
@@ -88,7 +89,7 @@ function CareersPage() {
               { label: "Compensation", value: INTERNSHIP.stipend },
             ].map((s, i) => (
               <Reveal key={s.label} delay={i * 70}>
-                <div className="border-border bg-card card-hover h-full rounded-2xl border p-6">
+                <div className="border-border bg-card card-hover gradient-border shine h-full rounded-2xl border p-6">
                   <p className="text-muted-foreground text-xs font-semibold tracking-[0.16em] uppercase">
                     {s.label}
                   </p>
@@ -99,13 +100,14 @@ function CareersPage() {
           </div>
 
           <Reveal delay={100} className="mt-6">
-            <div className="border-border bg-card rounded-2xl border p-6 sm:p-8">
+            <div className="border-border bg-card gradient-border card-hover rounded-2xl border p-6 sm:p-8">
               <h3 className="text-lg">Available tracks</h3>
               <div className="mt-4 flex flex-wrap gap-2">
-                {INTERNSHIP.tracks.map((t) => (
+                {INTERNSHIP.tracks.map((t, i) => (
                   <span
                     key={t}
-                    className="bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-semibold transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105"
+                    style={{ animationDelay: `${i * 60}ms` }}
+                    className="bg-primary/10 text-primary animate-rise-in shine rounded-full px-4 py-2 text-sm font-semibold transition-transform duration-200 hover:-translate-y-0.5 hover:scale-105"
                   >
                     {t}
                   </span>
@@ -113,7 +115,10 @@ function CareersPage() {
               </div>
               <ul className="mt-8 grid gap-3 sm:grid-cols-2">
                 {INTERNSHIP.perks.map((p) => (
-                  <li key={p} className="text-muted-foreground flex items-start gap-2 text-sm">
+                  <li
+                    key={p}
+                    className="text-muted-foreground lift-sm border-border/60 bg-background/40 flex items-start gap-2 rounded-xl border p-3 text-sm"
+                  >
                     <Check className="text-primary mt-0.5 h-4 w-4 shrink-0" />
                     {p}
                   </li>
@@ -124,7 +129,7 @@ function CareersPage() {
                   href={SITE.register}
                   target="_blank"
                   rel="noreferrer"
-                  className="bg-brand-gradient text-primary-foreground inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold transition-transform duration-200 hover:scale-105 active:scale-95"
+                  className="bg-brand-gradient text-primary-foreground shine inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-semibold shadow-glow transition-transform duration-200 hover:scale-105 active:scale-95"
                 >
                   Get Registered
                 </a>
