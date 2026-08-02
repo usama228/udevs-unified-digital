@@ -116,7 +116,7 @@ function AboutPage() {
                 <h3 className="mt-5 text-lg">{m.name}</h3>
                 <p className="text-muted-foreground text-sm">{m.role}</p>
                 <a
-                  href="https://www.linkedin.com/in/u-devs-9742a7338/"
+                  href="https://www.linkedin.com/company/udevs-software-house/"
                   target="_blank"
                   rel="noreferrer"
                   className="text-primary mt-4 inline-block text-sm font-semibold opacity-0 transition-opacity group-hover:opacity-100"

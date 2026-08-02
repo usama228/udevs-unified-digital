@@ -11,10 +11,10 @@ export const SITE = {
 };
 
 export const SOCIALS = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/u-devs-9742a7338/" },
-  { label: "Instagram", href: "https://www.instagram.com/udevs.official/?hl=en" },
-  { label: "Facebook", href: "https://www.facebook.com/UDevs.Dev/" },
-  { label: "YouTube", href: "https://www.youtube.com/@udevs" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/udevs-software-house/" },
+  { label: "Instagram", href: "https://www.instagram.com/udevs.official/" },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61577780125451" },
+  { label: "YouTube", href: "https://www.youtube.com/@UDEVS-25" },
   { label: "GitHub", href: "https://github.com/" },
   { label: "TikTok", href: "https://www.tiktok.com/" },
   { label: "X", href: "https://x.com/" },

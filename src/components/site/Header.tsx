@@ -30,7 +30,7 @@ export function Header() {
         <div
           className={cn(
             "flex items-center justify-between gap-4 rounded-2xl px-4 py-2.5 transition-all duration-300",
-            scrolled ? "glass-card" : "border border-transparent",
+          scrolled ? "glass-card" : "border border-transparent text-white",
           )}
         >
           <Link to="/" className="flex items-center gap-2.5">
@@ -39,7 +39,12 @@ export function Header() {
             </span>
             <span className="font-display text-lg leading-none font-bold">
               U Devs
-              <span className="text-muted-foreground block text-[10px] font-medium tracking-[0.16em] uppercase">
+              <span
+                className={cn(
+                  "block text-[10px] font-medium tracking-[0.16em] uppercase",
+                  scrolled ? "text-muted-foreground" : "text-white/70",
+                )}
+              >
                 Technology Solutions
               </span>
             </span>
@@ -50,8 +55,15 @@ export function Header() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="hover:text-primary rounded-full px-3 py-2 text-sm font-medium transition-colors"
-                activeProps={{ className: "text-primary bg-primary/10" }}
+                className={cn(
+                  "rounded-full px-3 py-2 text-sm font-medium transition-colors",
+                  scrolled ? "hover:text-primary" : "text-white/85 hover:text-white",
+                )}
+                activeProps={{
+                  className: scrolled
+                    ? "text-primary bg-primary/10"
+                    : "text-white bg-white/15",
+                }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}
@@ -71,7 +83,10 @@ export function Header() {
               type="button"
               aria-label="Toggle menu"
               onClick={() => setOpen((v) => !v)}
-              className="border-border inline-flex h-10 w-10 items-center justify-center rounded-full border xl:hidden"
+              className={cn(
+                "inline-flex h-10 w-10 items-center justify-center rounded-full border xl:hidden",
+                scrolled ? "border-border" : "border-white/30 text-white",
+              )}
             >
               {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </button>
