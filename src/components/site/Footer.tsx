@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="bg-primary-foreground flex h-12 w-12 items-center justify-center rounded-2xl p-2 shadow-sm">
+              <span className="bg-primary-foreground flex h-12 w-12 items-center justify-center rounded-2xl p-2 shadow-sm transition-transform duration-300 hover:scale-110">
                 <img src={logoMark.url} alt="U Devs logo" className="h-full w-full object-contain" />
               </span>
               <span className="font-display text-xl leading-none font-bold">
@@ -46,7 +46,7 @@ export function Footer() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                    className="text-primary-foreground/70 hover:text-primary-foreground inline-block transition-all duration-200 hover:translate-x-1"
                   >
                     {item.label}
                   </Link>
@@ -59,23 +59,23 @@ export function Footer() {
             <h3 className="text-sm font-semibold tracking-[0.16em] uppercase">Ecosystem</h3>
             <ul className="text-primary-foreground/70 mt-4 space-y-2.5 text-sm">
               <li>
-                <a href={SITE.website} className="hover:text-primary-foreground" target="_blank" rel="noreferrer">
+                <a href={SITE.website} className="hover:text-primary-foreground inline-block transition-all duration-200 hover:translate-x-1" target="_blank" rel="noreferrer">
                   udevs.company
                 </a>
               </li>
               <li>
-                <a href={SITE.hub} className="hover:text-primary-foreground" target="_blank" rel="noreferrer">
+                <a href={SITE.hub} className="hover:text-primary-foreground inline-block transition-all duration-200 hover:translate-x-1" target="_blank" rel="noreferrer">
                   udevs-hub.com
                 </a>
               </li>
               <li>
-                <Link to="/quran" className="hover:text-primary-foreground">Quran Hub</Link>
+                <Link to="/quran" className="hover:text-primary-foreground inline-block transition-all duration-200 hover:translate-x-1">Quran Hub</Link>
               </li>
               <li>
-                <Link to="/privacy" className="hover:text-primary-foreground">Privacy Policy</Link>
+                <Link to="/privacy" className="hover:text-primary-foreground inline-block transition-all duration-200 hover:translate-x-1">Privacy Policy</Link>
               </li>
               <li>
-                <Link to="/terms" className="hover:text-primary-foreground">Terms</Link>
+                <Link to="/terms" className="hover:text-primary-foreground inline-block transition-all duration-200 hover:translate-x-1">Terms</Link>
               </li>
             </ul>
           </div>
@@ -101,7 +101,7 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="bg-brand-gradient rounded-full px-4 py-2.5 text-sm font-semibold"
+                className="bg-brand-gradient rounded-full px-4 py-2.5 text-sm font-semibold transition-transform duration-200 hover:scale-105 active:scale-95"
               >
                 Join
               </button>
@@ -122,9 +122,30 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-primary-foreground/15 text-primary-foreground/60 mt-12 flex flex-col gap-2 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-primary-foreground/15 text-primary-foreground/60 mt-12 flex flex-col gap-3 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} U Devs. All rights reserved.</p>
-          <p>Founded by Usama Aslam · Co-founded by Warda Fatima</p>
+          <p className="animate-fade-in">Founded by Usama Aslam · Co-founded by Warda Fatima</p>
+          <p>
+            Powered by{" "}
+            <a
+              href={SITE.website}
+              target="_blank"
+              rel="noreferrer"
+              title="U Devs — Software &amp; Digital Solutions"
+              className="text-primary-foreground story-link font-semibold"
+            >
+              U Devs
+            </a>{" "}
+            ·{" "}
+            <a
+              href={SITE.website}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-primary-foreground transition-colors"
+            >
+              www.udevs.company
+            </a>
+          </p>
         </div>
       </div>
     </footer>
