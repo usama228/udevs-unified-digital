@@ -10,7 +10,7 @@ import marsLogin from "@/assets/mars-login.jpeg.asset.json";
 
 export const SITE = {
   name: "U Devs",
-  tagline: "Smart & Scalable Technology Solutions",
+  tagline: "Software & Digital Solutions",
   email: "udevsofficial25@gmail.com",
   phone: "+92 324 9351851",
   whatsappNumber: "923249351851",
