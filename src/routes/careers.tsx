@@ -36,7 +36,7 @@ function CareersPage() {
         <div className="mx-auto mt-14 max-w-4xl space-y-4">
           {JOBS.map((j, i) => (
             <Reveal key={j.title} delay={i * 50}>
-              <div className="border-border bg-card flex flex-col gap-4 rounded-2xl border p-6 transition-colors hover:border-[var(--primary)] sm:flex-row sm:items-center sm:justify-between">
+              <div className="border-border bg-card gradient-border lift-sm flex flex-col gap-4 rounded-2xl border p-6 transition-colors hover:border-[var(--primary)] sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h3 className="text-lg">{j.title}</h3>
                   <p className="text-muted-foreground mt-1 flex items-center gap-3 text-sm">
@@ -50,7 +50,7 @@ function CareersPage() {
                 </div>
                 <a
                   href={`mailto:${SITE.email}?subject=Application: ${encodeURIComponent(j.title)}`}
-                  className="bg-brand-gradient text-primary-foreground inline-flex shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-semibold"
+                  className="bg-brand-gradient text-primary-foreground shine inline-flex shrink-0 items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-transform duration-200 hover:scale-105 active:scale-95"
                 >
                   Apply Now
                 </a>
