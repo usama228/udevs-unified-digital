@@ -35,12 +35,7 @@ export function Header() {
           )}
         >
           <Link to="/" className="group flex items-center gap-2.5">
-            <span
-              className={cn(
-                "flex h-11 w-11 items-center justify-center rounded-2xl p-1.5 transition-all duration-300",
-                scrolled ? "bg-primary/8" : "bg-white/12 backdrop-blur-sm",
-              )}
-            >
+            <span className="bg-primary-foreground ring-primary/15 flex h-11 w-11 items-center justify-center rounded-2xl p-1.5 shadow-sm ring-1 transition-all duration-300">
               <img
                 src={logoMark.url}
                 alt="U Devs logo"
