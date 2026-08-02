@@ -15,6 +15,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { ScrollProgress } from "@/components/site/ScrollProgress";
 import { FloatingActions } from "@/components/site/FloatingActions";
+import { SmoothScroll } from "@/components/site/SmoothScroll";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -157,6 +158,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SmoothScroll />
       <ScrollProgress />
       <Header />
       <main className="min-h-screen">
