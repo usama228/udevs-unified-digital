@@ -35,7 +35,7 @@ export function Header() {
           )}
         >
           <Link to="/" className="group flex items-center gap-2.5">
-            <span className="bg-primary-foreground ring-primary/15 flex h-11 w-11 items-center justify-center rounded-2xl p-1.5 shadow-sm ring-1 transition-all duration-300">
+            <span className="logo-chip flex h-11 w-11 items-center justify-center rounded-2xl p-1.5 shadow-sm transition-all duration-300">
               <img
                 src={logoMark.url}
                 alt="U Devs logo"

@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="bg-primary-foreground flex h-12 w-12 items-center justify-center rounded-2xl p-2 shadow-sm transition-transform duration-300 hover:scale-110">
+              <span className="logo-chip flex h-12 w-12 items-center justify-center rounded-2xl p-2 shadow-sm transition-transform duration-300 hover:scale-110">
                 <img src={logoMark.url} alt="U Devs logo" className="h-full w-full object-contain" />
               </span>
               <span className="font-display text-xl leading-none font-bold">

@@ -382,6 +382,12 @@
   }
 }
 
+/* Always-light chip so the U Devs mark keeps full contrast on any theme */
+@utility logo-chip {
+  background: #ffffff;
+  border: 1px solid color-mix(in oklab, #0e5eff 14%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
