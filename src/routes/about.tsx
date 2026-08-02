@@ -3,6 +3,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Counter } from "@/components/site/Counter";
 import { PageHero, Section, SectionHeading } from "@/components/site/Section";
 import { STATS, TEAM, TIMELINE } from "@/data/site";
+import { Globe, Linkedin } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -38,11 +39,36 @@ function AboutPage() {
       <Section>
         <div className="grid gap-8 md:grid-cols-2">
           <Reveal>
-            <div className="border-border bg-card h-full rounded-3xl border p-8">
+            <div className="border-border bg-card h-full overflow-hidden rounded-3xl border">
+              <img
+                src={TEAM[0].photo}
+                alt="Usama Aslam, Founder and CEO of U Devs"
+                loading="lazy"
+                className="h-80 w-full object-cover object-top"
+              />
+              <div className="p-8">
               <p className="text-muted-foreground text-xs font-semibold tracking-[0.18em] uppercase">
                 Founder & CEO
               </p>
               <h2 className="mt-2 text-2xl">Usama Aslam</h2>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <a
+                  href={TEAM[0].linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
+                >
+                  <Linkedin className="h-3.5 w-3.5" /> LinkedIn
+                </a>
+                <a
+                  href={TEAM[0].website}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
+                >
+                  <Globe className="h-3.5 w-3.5" /> usama-aslam.com
+                </a>
+              </div>
               <h3 className="text-primary mt-6 text-sm font-semibold tracking-[0.16em] uppercase">
                 Vision
               </h3>
@@ -50,14 +76,40 @@ function AboutPage() {
                 To become one of the world's leading technology companies delivering
                 innovation, education and digital transformation.
               </p>
+              </div>
             </div>
           </Reveal>
           <Reveal delay={100}>
-            <div className="border-border bg-card h-full rounded-3xl border p-8">
+            <div className="border-border bg-card h-full overflow-hidden rounded-3xl border">
+              <img
+                src={TEAM[1].photo}
+                alt="Warda Fatima, Co-Founder of U Devs"
+                loading="lazy"
+                className="h-80 w-full object-cover object-top"
+              />
+              <div className="p-8">
               <p className="text-muted-foreground text-xs font-semibold tracking-[0.18em] uppercase">
                 Co-Founder
               </p>
               <h2 className="mt-2 text-2xl">Warda Fatima</h2>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <a
+                  href={TEAM[1].linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
+                >
+                  <Linkedin className="h-3.5 w-3.5" /> LinkedIn
+                </a>
+                <a
+                  href={TEAM[1].website}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="border-border hover:bg-primary/10 inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium"
+                >
+                  <Globe className="h-3.5 w-3.5" /> wardafatima.com
+                </a>
+              </div>
               <h3 className="text-primary mt-6 text-sm font-semibold tracking-[0.16em] uppercase">
                 Mission
               </h3>
@@ -65,6 +117,7 @@ function AboutPage() {
                 Empowering businesses, startups and students through technology,
                 mentorship and innovation.
               </p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -110,19 +163,40 @@ function AboutPage() {
           {TEAM.map((m, i) => (
             <Reveal key={m.name} delay={i * 70}>
               <div className="group border-border bg-card rounded-3xl border p-8 text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-glow)]">
-                <span className="bg-brand-gradient text-primary-foreground font-display mx-auto flex h-20 w-20 items-center justify-center rounded-2xl text-2xl font-bold">
-                  {m.initials}
-                </span>
+                {m.photo ? (
+                  <img
+                    src={m.photo}
+                    alt={`${m.name}, ${m.role} at U Devs`}
+                    loading="lazy"
+                    className="mx-auto h-20 w-20 rounded-2xl object-cover object-top"
+                  />
+                ) : (
+                  <span className="bg-brand-gradient text-primary-foreground font-display mx-auto flex h-20 w-20 items-center justify-center rounded-2xl text-2xl font-bold">
+                    {m.initials}
+                  </span>
+                )}
                 <h3 className="mt-5 text-lg">{m.name}</h3>
                 <p className="text-muted-foreground text-sm">{m.role}</p>
-                <a
-                  href="https://www.linkedin.com/company/udevs-software-house/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary mt-4 inline-block text-sm font-semibold opacity-0 transition-opacity group-hover:opacity-100"
-                >
-                  LinkedIn
-                </a>
+                <div className="mt-4 flex items-center justify-center gap-3 text-sm font-semibold">
+                  <a
+                    href={m.linkedin ?? "https://www.linkedin.com/company/udevs-software-house/"}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    LinkedIn
+                  </a>
+                  {m.website ? (
+                    <a
+                      href={m.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-primary hover:underline"
+                    >
+                      Website
+                    </a>
+                  ) : null}
+                </div>
               </div>
             </Reveal>
           ))}
