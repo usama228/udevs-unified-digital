@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { NAV, SITE, SOCIALS } from "@/data/site";
-import logo from "@/assets/udevs-logo.png.asset.json";
+import logoMark from "@/assets/udevs-mark.png.asset.json";
 
 export function Footer() {
   return (
@@ -12,7 +12,7 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <span className="border-primary-foreground/15 bg-primary-foreground/10 flex h-12 w-12 items-center justify-center rounded-2xl border p-1.5">
-                <img src={logo.url} alt="U Devs logo" className="h-full w-full object-contain" />
+                <img src={logoMark.url} alt="U Devs logo" className="h-full w-full object-contain" />
               </span>
               <span className="font-display text-xl leading-none font-bold">
                 U Devs
