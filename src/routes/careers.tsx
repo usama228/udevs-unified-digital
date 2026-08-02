@@ -89,7 +89,7 @@ function CareersPage() {
               { label: "Compensation", value: INTERNSHIP.stipend },
             ].map((s, i) => (
               <Reveal key={s.label} delay={i * 70}>
-                <div className="border-border bg-card card-hover gradient-border shine h-full rounded-2xl border p-6">
+                <div className="border-border bg-card lift-lg cursor-glow gradient-border shine h-full rounded-2xl border p-6">
                   <p className="text-muted-foreground text-xs font-semibold tracking-[0.16em] uppercase">
                     {s.label}
                   </p>
@@ -100,7 +100,7 @@ function CareersPage() {
           </div>
 
           <Reveal delay={100} className="mt-6">
-            <div className="border-border bg-card gradient-border card-hover rounded-2xl border p-6 sm:p-8">
+            <div className="border-border bg-card gradient-border lift-lg cursor-glow rounded-2xl border p-6 sm:p-8">
               <h3 className="text-lg">Available tracks</h3>
               <div className="mt-4 flex flex-wrap gap-2">
                 {INTERNSHIP.tracks.map((t, i) => (

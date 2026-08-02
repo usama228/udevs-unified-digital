@@ -60,7 +60,7 @@ function PortfolioPage() {
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((p, i) => (
             <Reveal key={p.title} delay={i * 60}>
-              <article className="group border-border bg-card h-full overflow-hidden rounded-3xl border transition-all duration-300 card-hover">
+              <article className="group border-border bg-card h-full overflow-hidden rounded-3xl border transition-all duration-300 lift-lg cursor-glow">
                 <div className="bg-night relative h-44 overflow-hidden">
                   {p.image ? (
                     <img

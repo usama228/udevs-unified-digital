@@ -239,7 +239,7 @@ function Index() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {DIVISIONS.map((d, i) => (
             <Reveal key={d.name} delay={i * 90}>
-              <div className="group border-border bg-card relative h-full overflow-hidden rounded-3xl border p-8 transition-all duration-300 card-hover">
+              <div className="group border-border bg-card relative h-full overflow-hidden rounded-3xl border p-8 transition-all duration-300 lift-lg cursor-glow">
                 <div
                   className={
                     d.tone === "emerald"
@@ -282,7 +282,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section className="bg-surface border-border border-y">
+      <Section tone="alt">
         <SectionHeading
           kicker="Services"
           title="Everything you need to build, launch and scale"
@@ -345,7 +345,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section className="bg-surface border-border border-y">
+      <Section tone="alt">
         <SectionHeading
           kicker="Process"
           title="A transparent path from idea to impact"
@@ -374,7 +374,7 @@ function Index() {
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={t.name} delay={i * 80}>
-              <figure className="border-border bg-card card-hover h-full rounded-3xl border p-8">
+              <figure className="border-border bg-card lift-lg cursor-glow h-full rounded-3xl border p-8">
                 <div className="text-accent flex gap-1">
                   {Array.from({ length: t.rating }).map((_, idx) => (
                     <Star key={idx} className="fill-current h-4 w-4" />
@@ -396,7 +396,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section className="bg-surface border-border border-t">
+      <Section tone="alt">
         <SectionHeading kicker="Technologies" title="A stack chosen for longevity" />
         <div className="mt-10 flex flex-wrap justify-center gap-2.5">
           {TECHNOLOGIES.map((t) => (
