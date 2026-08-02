@@ -1,5 +1,9 @@
 import usamaPhoto from "@/assets/usama-aslam.png.asset.json";
 import wardaPhoto from "@/assets/warda-fatima.jpeg.asset.json";
+import p12Assets from "@/assets/p12-assets.png.asset.json";
+import p12Arcana from "@/assets/p12-arcana.png.asset.json";
+import p12Community from "@/assets/p12-community.png.asset.json";
+import p12Loader from "@/assets/p12-loader.png.asset.json";
 
 export const SITE = {
   name: "U Devs",
@@ -128,7 +132,32 @@ export const TECHNOLOGIES = [
   "Kubernetes", "GitHub", "OpenAI", "Claude", "Gemini",
 ];
 
-export const PROJECTS = [
+export const PROJECTS: {
+  title: string;
+  category: string;
+  client: string;
+  tech: string[];
+  summary: string;
+  image?: string;
+  gallery?: { url: string; caption: string }[];
+  link?: string;
+}[] = [
+  {
+    title: "P12 Gaming Web3 Platform",
+    category: "Web3",
+    client: "Project Twelve (P12)",
+    tech: ["React", "Next.js", "Web3", "Ethereum", "Node"],
+    summary:
+      "A Web3 gaming ecosystem with wallet connect, on-chain SBT identity, creator editor downloads and an Arcana rewards arena.",
+    image: p12Assets.url,
+    link: "https://p12.network",
+    gallery: [
+      { url: p12Assets.url, caption: "P12 Assets — on-chain identity and SBT showcase" },
+      { url: p12Arcana.url, caption: "P12 Arcana — creator arena with prize pool and rounds" },
+      { url: p12Community.url, caption: "Community, links and latest announcements hub" },
+      { url: p12Loader.url, caption: "Animated WebGL brand loader and entry screen" },
+    ],
+  },
   { title: "Enterprise ERP Suite", category: "ERP", client: "Manufacturing Group", tech: ["React", "Node", "PostgreSQL"], summary: "Unified production, inventory and finance across 6 plants." },
   { title: "Healthcare CRM", category: "CRM", client: "Private Hospital Network", tech: ["Next.js", "Nest", "MySQL"], summary: "Patient lifecycle, appointments and automated follow-ups." },
   { title: "AI Support Copilot", category: "AI", client: "SaaS Startup", tech: ["OpenAI", "Python", "AWS"], summary: "Cut first-response time by 71% with a retrieval chatbot." },
@@ -140,7 +169,7 @@ export const PROJECTS = [
   { title: "Quran Academy LMS", category: "Web", client: "U Devs Quran Hub", tech: ["Next.js", "Firebase"], summary: "Class scheduling, progress tracking and teacher payouts." },
 ];
 
-export const PROJECT_FILTERS = ["All", "Web", "Mobile", "ERP", "CRM", "AI", "WordPress"];
+export const PROJECT_FILTERS = ["All", "Web3", "Web", "Mobile", "ERP", "CRM", "AI", "WordPress"];
 
 export const TEAM: {
   name: string;

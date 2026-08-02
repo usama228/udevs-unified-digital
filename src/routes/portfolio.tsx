@@ -3,6 +3,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
 import { PageHero, Section } from "@/components/site/Section";
 import { PROJECTS, PROJECT_FILTERS } from "@/data/site";
+import { ExternalLink } from "lucide-react";
+
+const FEATURED = PROJECTS.find((p) => p.gallery)!;
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -59,9 +62,20 @@ function PortfolioPage() {
             <Reveal key={p.title} delay={i * 60}>
               <article className="group border-border bg-card h-full overflow-hidden rounded-3xl border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-glow)]">
                 <div className="bg-night relative h-44 overflow-hidden">
-                  <div className="bg-primary/40 absolute -top-10 -left-6 h-40 w-40 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-125" />
-                  <div className="bg-accent/30 absolute right-0 bottom-0 h-32 w-32 rounded-full blur-3xl" />
-                  <span className="text-primary-foreground/85 absolute bottom-4 left-6 text-xs font-semibold tracking-[0.18em] uppercase">
+                  {p.image ? (
+                    <img
+                      src={p.image}
+                      alt={`${p.title} interface screenshot`}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <>
+                      <div className="bg-primary/40 absolute -top-10 -left-6 h-40 w-40 rounded-full blur-3xl transition-transform duration-500 group-hover:scale-125" />
+                      <div className="bg-accent/30 absolute right-0 bottom-0 h-32 w-32 rounded-full blur-3xl" />
+                    </>
+                  )}
+                  <span className="text-primary-foreground/85 absolute bottom-4 left-6 text-xs font-semibold tracking-[0.18em] uppercase drop-shadow">
                     {p.category}
                   </span>
                 </div>
@@ -79,8 +93,45 @@ function PortfolioPage() {
                       </span>
                     ))}
                   </div>
+                  {p.link ? (
+                    <a
+                      href={p.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-primary mt-5 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
+                    >
+                      Visit live site <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  ) : null}
                 </div>
               </article>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      <Section className="bg-surface border-border border-y">
+        <Reveal>
+          <p className="text-muted-foreground text-xs font-semibold tracking-[0.18em] uppercase">
+            Featured case study
+          </p>
+          <h2 className="mt-2 text-3xl">{FEATURED.title}</h2>
+          <p className="text-muted-foreground mt-3 max-w-2xl">{FEATURED.summary}</p>
+        </Reveal>
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {FEATURED.gallery?.map((shot, i) => (
+            <Reveal key={shot.url} delay={i * 70}>
+              <figure className="border-border bg-card overflow-hidden rounded-3xl border">
+                <img
+                  src={shot.url}
+                  alt={shot.caption}
+                  loading="lazy"
+                  className="w-full object-cover"
+                />
+                <figcaption className="text-muted-foreground p-5 text-sm">
+                  {shot.caption}
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
         </div>
