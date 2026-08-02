@@ -134,10 +134,12 @@ function Index() {
         <div className="container-x grid grid-cols-2 gap-8 md:grid-cols-5">
           {STATS.map((s, i) => (
             <Reveal key={s.label} delay={i * 70} className="text-center">
-              <p className="text-gradient font-display text-4xl font-bold">
+              <p className="font-display text-4xl font-semibold tracking-tight">
                 {s.label === "Support" ? "24/7" : <Counter value={s.value} suffix={s.suffix} />}
               </p>
-              <p className="text-muted-foreground mt-1 text-sm">{s.label}</p>
+              <p className="text-muted-foreground mt-1 text-xs tracking-[0.14em] uppercase">
+                {s.label}
+              </p>
             </Reveal>
           ))}
         </div>
