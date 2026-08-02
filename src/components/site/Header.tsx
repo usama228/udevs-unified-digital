@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { NAV } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
-import logo from "@/assets/udevs-logo.png.asset.json";
+import logoMark from "@/assets/udevs-mark.png.asset.json";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -42,7 +42,7 @@ export function Header() {
               )}
             >
               <img
-                src={logo.url}
+                src={logoMark.url}
                 alt="U Devs logo"
                 className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-110"
               />
