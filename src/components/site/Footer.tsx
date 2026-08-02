@@ -122,9 +122,30 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-primary-foreground/15 text-primary-foreground/60 mt-12 flex flex-col gap-2 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-primary-foreground/15 text-primary-foreground/60 mt-12 flex flex-col gap-3 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} U Devs. All rights reserved.</p>
-          <p>Founded by Usama Aslam · Co-founded by Warda Fatima</p>
+          <p className="animate-fade-in">Founded by Usama Aslam · Co-founded by Warda Fatima</p>
+          <p>
+            Powered by{" "}
+            <a
+              href={SITE.website}
+              target="_blank"
+              rel="noreferrer"
+              title="U Devs — Software &amp; Digital Solutions"
+              className="text-primary-foreground story-link font-semibold"
+            >
+              U Devs
+            </a>{" "}
+            ·{" "}
+            <a
+              href={SITE.website}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-primary-foreground transition-colors"
+            >
+              www.udevs.company
+            </a>
+          </p>
         </div>
       </div>
     </footer>
