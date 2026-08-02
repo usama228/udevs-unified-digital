@@ -1,3 +1,6 @@
+import usamaPhoto from "@/assets/usama-aslam.png.asset.json";
+import wardaPhoto from "@/assets/warda-fatima.jpeg.asset.json";
+
 export const SITE = {
   name: "U Devs",
   tagline: "Smart & Scalable Technology Solutions",
@@ -139,9 +142,30 @@ export const PROJECTS = [
 
 export const PROJECT_FILTERS = ["All", "Web", "Mobile", "ERP", "CRM", "AI", "WordPress"];
 
-export const TEAM = [
-  { name: "Usama Aslam", role: "Founder & CEO", initials: "UA" },
-  { name: "Warda Fatima", role: "Co-Founder", initials: "WF" },
+export const TEAM: {
+  name: string;
+  role: string;
+  initials: string;
+  photo?: string;
+  linkedin?: string;
+  website?: string;
+}[] = [
+  {
+    name: "Usama Aslam",
+    role: "Founder & CEO",
+    initials: "UA",
+    photo: usamaPhoto.url,
+    linkedin: "https://www.linkedin.com/in/usama-aslam-ceo-udevs/",
+    website: "https://www.usama-aslam.com",
+  },
+  {
+    name: "Warda Fatima",
+    role: "Co-Founder",
+    initials: "WF",
+    photo: wardaPhoto.url,
+    linkedin: "https://www.linkedin.com/in/warda-fatima-co-founder-udevs/",
+    website: "https://www.wardafatima.com",
+  },
   { name: "Minahil Hasan", role: "Senior Project Manager", initials: "MH" },
   { name: "M Ahmad Aslam", role: "Marketing Manager", initials: "MA" },
 ];
