@@ -1,3 +1,6 @@
+import usamaPhoto from "@/assets/usama-aslam.png.asset.json";
+import wardaPhoto from "@/assets/warda-fatima.jpeg.asset.json";
+
 export const SITE = {
   name: "U Devs",
   tagline: "Smart & Scalable Technology Solutions",
