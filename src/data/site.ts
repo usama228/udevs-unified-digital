@@ -33,6 +33,7 @@ export const INTERNSHIP = {
   tracks: [
     "Full Stack Development",
     "Frontend Development",
+    "AI / Machine Learning",
     "Digital Marketing",
     "Freelancing",
     "WordPress",
@@ -40,6 +41,7 @@ export const INTERNSHIP = {
   ],
   perks: [
     "Proper mentorship from working engineers",
+    "Hands-on AI/ML projects with real datasets",
     "Structured training and weekly reviews",
     "Live online classes on Google Meet",
     "Top performers may be offered a full time role",
