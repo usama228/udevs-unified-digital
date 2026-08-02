@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { NAV } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import { Magnetic } from "./MagneticButton";
 import logoMark from "@/assets/udevs-mark.png.asset.json";
 
 export function Header() {
@@ -20,18 +22,23 @@ export function Header() {
 
   useEffect(() => setOpen(false), [pathname]);
 
+  const isActive = (to: string) =>
+    to === "/" ? pathname === "/" : pathname.startsWith(to);
+
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
         scrolled ? "py-2" : "py-4",
       )}
     >
       <div className="container-x">
         <div
           className={cn(
-            "flex items-center justify-between gap-4 rounded-2xl px-4 py-2.5 transition-all duration-300",
-          scrolled ? "glass-card" : "border border-transparent text-white",
+            "flex items-center justify-between gap-4 rounded-[1.5rem] px-4 py-2.5 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+            scrolled
+              ? "glass-card shadow-soft backdrop-blur-xl"
+              : "border border-transparent text-white",
           )}
         >
           <Link to="/" className="group flex items-center gap-2.5">
@@ -56,36 +63,49 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-0.5 xl:flex">
-            {NAV.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={cn(
-                  "relative rounded-full px-3 py-2 text-sm font-medium transition-all duration-200",
-                  scrolled
-                    ? "hover:bg-primary/8 hover:text-primary"
-                    : "text-white/85 hover:bg-white/10 hover:text-white",
-                )}
-                activeProps={{
-                  className: scrolled
-                    ? "text-primary bg-primary/10"
-                    : "text-white bg-white/15",
-                }}
-                activeOptions={{ exact: item.to === "/" }}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {NAV.map((item) => {
+              const active = isActive(item.to);
+              return (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={cn(
+                    "relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors duration-300",
+                    scrolled
+                      ? active
+                        ? "text-primary"
+                        : "hover:text-primary"
+                      : active
+                        ? "text-white"
+                        : "text-white/80 hover:text-white",
+                  )}
+                >
+                  {active ? (
+                    <motion.span
+                      layoutId="nav-active-pill"
+                      transition={{ type: "spring", stiffness: 420, damping: 36 }}
+                      className={cn(
+                        "absolute inset-0 rounded-full",
+                        scrolled ? "bg-primary/10" : "bg-white/15",
+                      )}
+                    />
+                  ) : null}
+                  <span className="relative">{item.label}</span>
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link
-              to="/register"
-              className="bg-brand-gradient text-primary-foreground shadow-glow hidden rounded-full px-5 py-2.5 text-sm font-semibold transition-transform hover:scale-[1.03] sm:inline-flex"
-            >
-              REGISTER NOW
-            </Link>
+            <Magnetic className="hidden sm:inline-flex">
+              <Link
+                to="/register"
+                className="bg-brand-gradient text-primary-foreground shadow-glow shine inline-flex rounded-full px-5 py-2.5 text-sm font-semibold tracking-wide"
+              >
+                REGISTER NOW
+              </Link>
+            </Magnetic>
             <button
               type="button"
               aria-label="Toggle menu"
@@ -100,29 +120,44 @@ export function Header() {
           </div>
         </div>
 
-        {open ? (
-          <div className="glass-card mt-2 rounded-2xl p-3 xl:hidden">
-            <nav className="grid gap-1">
-              {NAV.map((item) => (
+        <AnimatePresence initial={false}>
+          {open ? (
+            <motion.div
+              key="mobile-menu"
+              initial={{ opacity: 0, y: -12, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: "auto" }}
+              exit={{ opacity: 0, y: -12, height: 0 }}
+              transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+              className="glass-card mt-2 overflow-hidden rounded-[1.5rem] p-3 xl:hidden"
+            >
+              <nav className="grid gap-1">
+                {NAV.map((item, i) => (
+                  <motion.div
+                    key={item.to}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 + i * 0.035, duration: 0.35 }}
+                  >
+                    <Link
+                      to={item.to}
+                      className="hover:bg-primary/10 block rounded-xl px-3 py-2.5 text-sm font-medium transition-colors"
+                      activeProps={{ className: "text-primary bg-primary/10" }}
+                      activeOptions={{ exact: item.to === "/" }}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                ))}
                 <Link
-                  key={item.to}
-                  to={item.to}
-                  className="hover:bg-primary/10 rounded-xl px-3 py-2.5 text-sm font-medium"
-                  activeProps={{ className: "text-primary bg-primary/10" }}
-                  activeOptions={{ exact: item.to === "/" }}
+                  to="/register"
+                  className="bg-brand-gradient text-primary-foreground mt-1 rounded-xl px-3 py-2.5 text-center text-sm font-semibold"
                 >
-                  {item.label}
+                  REGISTER NOW
                 </Link>
-              ))}
-              <Link
-                to="/register"
-                className="bg-brand-gradient text-primary-foreground mt-1 rounded-xl px-3 py-2.5 text-center text-sm font-semibold"
-              >
-                REGISTER NOW
-              </Link>
-            </nav>
-          </div>
-        ) : null}
+              </nav>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
       </div>
     </header>
   );
