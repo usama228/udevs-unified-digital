@@ -71,7 +71,7 @@ function Index() {
       <section
         ref={heroRef}
         onMouseMove={onHeroMove}
-        className="bg-night relative flex min-h-[92vh] items-center overflow-hidden pt-32 pb-24"
+        className="bg-night relative flex min-h-[92vh] items-center overflow-hidden pt-32 pb-28"
       >
         <div className="bg-aurora absolute inset-0 opacity-70" />
         <div className="bg-grid absolute inset-0 opacity-30" />
@@ -185,7 +185,7 @@ function Index() {
               <motion.div
                 animate={reduced ? {} : { y: [0, -12, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="glass-card absolute -bottom-6 -left-4 hidden rounded-2xl px-5 py-4 sm:block"
+                className="border-primary-foreground/15 bg-[oklch(0.19_0.064_265.5_/_0.88)] absolute -bottom-5 left-4 hidden rounded-2xl border px-5 py-4 shadow-lg backdrop-blur-xl sm:block"
               >
                 <p className="text-primary-foreground text-2xl font-bold">
                   <Counter value={100} suffix="+" />
@@ -198,7 +198,7 @@ function Index() {
               <motion.div
                 animate={reduced ? {} : { y: [0, 10, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="glass-card text-primary-foreground absolute -top-5 -right-2 hidden items-center gap-2 rounded-2xl px-4 py-3 text-xs font-semibold md:flex"
+                className="border-primary-foreground/15 bg-[oklch(0.19_0.064_265.5_/_0.88)] text-primary-foreground absolute -top-4 right-4 hidden items-center gap-2 rounded-2xl border px-4 py-3 text-xs font-semibold shadow-lg backdrop-blur-xl md:flex"
               >
                 <ShieldCheck className="text-accent h-4 w-4" /> Enterprise-grade delivery
               </motion.div>
@@ -206,7 +206,7 @@ function Index() {
               <motion.div
                 animate={reduced ? {} : { y: [0, -8, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
-                className="glass-card text-primary-foreground absolute top-1/2 -right-6 hidden items-center gap-2 rounded-2xl px-4 py-3 text-xs font-semibold lg:flex"
+                className="border-primary-foreground/15 bg-[oklch(0.19_0.064_265.5_/_0.88)] text-primary-foreground absolute top-1/2 -right-4 hidden items-center gap-2 rounded-2xl border px-4 py-3 text-xs font-semibold shadow-lg backdrop-blur-xl lg:flex"
               >
                 <Zap className="text-accent h-4 w-4" /> 99.9% uptime
               </motion.div>
