@@ -164,7 +164,7 @@ function Index() {
               className="relative"
               style={
                 reduced
-                  ? undefined
+                  ? {}
                   : {
                       transform:
                         "translate3d(calc(var(--px, 0) * 10px), calc(var(--py, 0) * 10px), 0)",
@@ -183,7 +183,7 @@ function Index() {
               </div>
 
               <motion.div
-                animate={reduced ? undefined : { y: [0, -12, 0] }}
+                animate={reduced ? {} : { y: [0, -12, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 className="glass-card absolute -bottom-6 -left-4 hidden rounded-2xl px-5 py-4 sm:block"
               >
@@ -196,7 +196,7 @@ function Index() {
               </motion.div>
 
               <motion.div
-                animate={reduced ? undefined : { y: [0, 10, 0] }}
+                animate={reduced ? {} : { y: [0, 10, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
                 className="glass-card text-primary-foreground absolute -top-5 -right-2 hidden items-center gap-2 rounded-2xl px-4 py-3 text-xs font-semibold md:flex"
               >
@@ -204,7 +204,7 @@ function Index() {
               </motion.div>
 
               <motion.div
-                animate={reduced ? undefined : { y: [0, -8, 0] }}
+                animate={reduced ? {} : { y: [0, -8, 0] }}
                 transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
                 className="glass-card text-primary-foreground absolute top-1/2 -right-6 hidden items-center gap-2 rounded-2xl px-4 py-3 text-xs font-semibold lg:flex"
               >
