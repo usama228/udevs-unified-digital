@@ -5,7 +5,7 @@ import { PageHero, Section } from "@/components/site/Section";
 import { PROJECTS, PROJECT_FILTERS } from "@/data/site";
 import { ExternalLink } from "lucide-react";
 
-const FEATURED = PROJECTS.find((p) => p.gallery)!;
+const FEATURED = PROJECTS.filter((p) => p.gallery);
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
